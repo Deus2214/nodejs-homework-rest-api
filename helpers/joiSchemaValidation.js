@@ -3,7 +3,7 @@ const Joi = require("joi");
 const phoneRegex =
   /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,3}[-\s.]?[0-9]{1,4}[-\s.]?[0-9]{1,4}$/;
 
-const contactsSchemaValidation = Joi.object({
+const joiContactsSchemaValidation = Joi.object({
   name: Joi.string().min(3).max(35).required().messages({
     "any.required": "Missing required 'name' field",
     "string.min": "The length of 'name' must be between 3 and 35 characters",
@@ -20,6 +20,17 @@ const contactsSchemaValidation = Joi.object({
     "string.pattern.base":
       "The phone number format is incorrect. Please enter in the format +XX-XXX-XXX-XX-XX",
   }),
+
+  favorite: Joi.boolean(),
 });
 
-module.exports = contactsSchemaValidation;
+const joiUpdateFavoriteSchemaValidation = Joi.object({
+  favorite: Joi.boolean()
+    .required()
+    .messages({ "any.required": "missing field favorite" }),
+});
+
+module.exports = {
+  joiContactsSchemaValidation,
+  joiUpdateFavoriteSchemaValidation,
+};
