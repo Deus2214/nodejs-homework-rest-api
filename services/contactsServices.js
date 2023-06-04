@@ -7,8 +7,9 @@
 //   fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
 
 // const listContactsService = async () => {
-//   const contacts = await fs.readFile(contactsPath);
-//   return JSON.parse(contacts);
+//   const contacts = await Contact.find();
+//   console.log(contacts);
+//   return contacts;
 // };
 
 // const getContactByIdService = async (contactId) => {
